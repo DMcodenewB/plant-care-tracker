@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>com.dmhere</groupId>
 	<artifactId>plant-care-tracker</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>plant-care-tracker</name>
 	<description>Plant care app by dm</description>
 	<properties>

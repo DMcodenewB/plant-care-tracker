@@ -1,4 +1,4 @@
-# Plant care tracker
+# Plant care planner
 ___
 
 > [!NOTE]

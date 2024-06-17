@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/plantcare
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/plantcare?useSSL=false
       SPRING_DATASOURCE_USERNAME: 123124
       SPRING_DATASOURCE_PASSWORD: 181960
     ports:

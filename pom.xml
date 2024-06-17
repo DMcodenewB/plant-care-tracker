@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dmhere</groupId>
-	<artifactId>plant-care-tracker</artifactId>
-	<name>plant-care-tracker</name>
+	<artifactId>plant-care-planner</artifactId>
+	<name>plant-care-planner</name>
 	<description>Plant care app by dm</description>
 	<properties>
 		<java.version>17</java.version>

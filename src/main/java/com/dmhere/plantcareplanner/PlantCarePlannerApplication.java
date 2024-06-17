@@ -1,13 +1,13 @@
-package com.dmhere.plantcaretracker;
+package com.dmhere.plantcareplanner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlantCareTrackerApplication {
+public class PlantCarePlannerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlantCareTrackerApplication.class, args);
+		SpringApplication.run(PlantCarePlannerApplication.class, args);
 	}
 
 }

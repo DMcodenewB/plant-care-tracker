@@ -1,38 +1,38 @@
-version: '3.8'
-
 services:
-  db:
-    image: postgres:13
+  plantcare-postgres:
+    image: postgres:14.1-alpine
     environment:
-      POSTGRES_USER: 123124
+      POSTGRES_USER: student
       POSTGRES_PASSWORD: 181960
       POSTGRES_DB: plantcare
+    ports:
+      - '5432:5432'
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - plantcare-network
 
-  backend:
-    build: ./backend
-    depends_on:
-      - db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/plantcare?useSSL=false
-      SPRING_DATASOURCE_USERNAME: 123124
-      SPRING_DATASOURCE_PASSWORD: 181960
-    ports:
-      - "8080:8080"
-    networks:
-      - plantcare-network
+#  backend:
+#    build: ./
+#    depends_on:
+#      - plantcare-postgres
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/plantcare?useSSL=false
+#      SPRING_DATASOURCE_USERNAME: student
+#      SPRING_DATASOURCE_PASSWORD: 181960
+#    ports:
+#      - "8086:8080"
+#    networks:
+#      - plantcare-network
 
-  frontend:
-    build: ./frontend
-    depends_on:
-      - backend
-    ports:
-      - "80:80"
-    networks:
-      - plantcare-network
+#  frontend:
+#    build: ./frontend
+#    depends_on:
+#      - backend
+#    ports:
+#      - "80:80"
+#    networks:
+#      - plantcare-network
 
 networks:
   plantcare-network:

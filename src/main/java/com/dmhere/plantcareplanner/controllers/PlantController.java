@@ -1,7 +1,9 @@
 package com.dmhere.plantcareplanner.controllers;
 
 import com.dmhere.plantcareplanner.models.Plant;
+import com.dmhere.plantcareplanner.models.Task;
 import com.dmhere.plantcareplanner.repositories.PlantRepository;
+import com.dmhere.plantcareplanner.services.PlantTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ public class PlantController {
     @Autowired
     private PlantRepository plantRepository;
 
+    @Autowired
+    PlantTaskService plantTaskService;
+
     @GetMapping("/")
     public List<Plant> getPlants() {
         return plantRepository.getAllPlants();
@@ -22,6 +27,11 @@ public class PlantController {
     @GetMapping("/{id}")
     public Plant getPlant(@PathVariable int id) {
         return plantRepository.getPlantById(id);
+    }
+
+    @GetMapping("/{id}/tasks")
+    public List<Task> getTasksForPlant(@PathVariable int id) {
+        return plantTaskService.getTasksByPlantId(id);
     }
 
     @PostMapping("/")

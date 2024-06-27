@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/plants")
+@CrossOrigin("http://localhost:5173/")
 public class PlantController {
 
     @Autowired
@@ -27,6 +28,11 @@ public class PlantController {
     @GetMapping("/{id}")
     public Plant getPlant(@PathVariable int id) {
         return plantRepository.getPlantById(id);
+    }
+
+    @GetMapping("/name")
+    public Plant getPlantByName(@RequestParam String name) {
+        return plantRepository.getPlantByName(name);
     }
 
     @GetMapping("/{id}/tasks")

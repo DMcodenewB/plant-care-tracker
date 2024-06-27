@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
+
+    Logger log = Logger.getLogger(TaskController.class.getName());
 
     @Autowired
     private TaskRepository taskRepository;
@@ -37,7 +40,7 @@ public class TaskController {
         if (taskToUpdate != null) {
             taskToUpdate.setName(task.getName());
             taskToUpdate.setDescription(task.getDescription());
-            taskToUpdate.setRecurring(task.isRecurring());
+            taskToUpdate.setIsRecurring(task.getIsRecurring());
             taskToUpdate.setDueDate(task.getDueDate());
             return taskRepository.updateTask(taskToUpdate);
         } else {
@@ -48,6 +51,7 @@ public class TaskController {
     @PatchMapping("/{id}")
     public int partiallyUpdateTask(@PathVariable int id, @RequestBody Task task) {
         Task taskToUpdate = taskRepository.getTaskById(id);
+        log.info(task.toString());
 
         if (taskToUpdate != null) {
             if(task.getName() != null){
@@ -56,8 +60,8 @@ public class TaskController {
             if(task.getDescription() != null){
                 taskToUpdate.setDescription(task.getDescription());
             }
-            if(task.isRecurring()){
-                taskToUpdate.setRecurring(true);
+            if(task.getIsRecurring()){
+                taskToUpdate.setIsRecurring(true);
             }
             if(task.getDueDate() != null){
                 taskToUpdate.setDueDate(task.getDueDate());

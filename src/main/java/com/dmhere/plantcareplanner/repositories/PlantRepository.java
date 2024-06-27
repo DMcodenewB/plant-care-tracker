@@ -34,6 +34,17 @@ public class PlantRepository {
         return result;
     }
 
+    public Plant getPlantByName(String name){
+        Plant result = jdbcTemplate.queryForObject("select id, name, plant_date, description from plant where name like ?",
+                BeanPropertyRowMapper.newInstance(Plant.class), "%"+name+"%");
+        if (result != null) {
+            logger.log(Level.INFO, result.toString());
+        } else {
+            logger.log(Level.WARNING, "null result?");
+        }
+        return result;
+    }
+
     public int addPlant(List<Plant> newPlants) {
         newPlants.forEach(newPlant -> jdbcTemplate.update("insert into plant (name, plant_date, description) values (?, ?, ?)",
                 newPlant.getName(), newPlant.getPlantDate(), newPlant.getDescription()));

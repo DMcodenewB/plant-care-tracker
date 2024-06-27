@@ -14,7 +14,17 @@ public class Task {
     private int id;
     private String name;
     private String description;
-    private boolean isRecurring;
+    private Boolean isRecurring;
     private Timestamp dueDate;
+
+    @Override
+    public String toString(){
+        return "Task [id=" + id
+                + ", name=" + name
+                + ", description=" + description
+                + ", isRecurring=" + isRecurring
+                + ", dueDate=" + dueDate
+                + "]";
+    }
 
 }

@@ -26,12 +26,12 @@ public class TaskRepository {
 
     public int addTask(Task task) {
         return jdbcTemplate.update("insert into task(name, description, is_recurring, due_date) values (?, ?, ?, ?)",
-                task.getName(), task.getDescription(), task.isRecurring(), task.getDueDate());
+                task.getName(), task.getDescription(), task.getIsRecurring(), task.getDueDate());
     }
 
     public int updateTask(Task task) {
         return jdbcTemplate.update("update task set name=?, description=?, is_recurring=?, due_date=? where id=?",
-                task.getName(), task.getDescription(), task.isRecurring(), task.getDueDate(), task.getId());
+                task.getName(), task.getDescription(), task.getIsRecurring(), task.getDueDate(), task.getId());
     }
 
     public int deleteTask(int id) {

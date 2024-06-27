@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class PlantTaskService {
+
+    Logger log = Logger.getLogger(PlantTaskService.class.getName());
 
     @Autowired
     PlantTaskRepository plantTaskRepository;
@@ -21,7 +24,8 @@ public class PlantTaskService {
         PlantTask plantTask = new PlantTask();
         plantTask.setPlant_id(plantTaskDTO.getPlantID());
         plantTask.setTask_id(plantTaskDTO.getTaskID());
-        plantTaskRepository.save(plantTask);
+        log.info("Adding task " + plantTaskDTO.getTaskID() + " to plant: " + plantTaskDTO.getPlantID());
+        plantTaskRepository.saveByPlantAndTask(plantTask.getPlant_id(), plantTask.getTask_id());
     }
 
     public List<Task> getTasksByPlantId(int id) {
